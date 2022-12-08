@@ -5,7 +5,6 @@ const cases = require('./utils/generateMarkdown.js')
 const path = "README.md";
 
 
-
 const generateREADME = ({
   title,
   description,
@@ -16,9 +15,12 @@ const generateREADME = ({
   contributing,
   tests,
   questions,
-}) =>
+},retrieveLic, retrieveLicBadge
+) =>
   `
 # ${title}
+
+${retrieveLicBadge}
 
 ## Description
 
@@ -49,6 +51,7 @@ ${credits}
 ## License
 
 ${license}
+${retrieveLic}
 
 ## Contributing
 
@@ -112,15 +115,16 @@ inquirer
   ])
   .then((answers) => {
     const retrieveLic = funcLicense(answers.license)
-    console.log(retrieveLic)
-    // const data = generateREADME(answers);
-    // fs.writeFile(path, data, (err) => {
-    //   if (err) {
-    //     console.log(err.message);
-    //   } else {
-    //     console.log("data written successfully!");
-    //   }
-    // })
+    // console.log(retrieveLic)
+    const retrieveLicBadge = badgeLicense(answers.license)
+    const data = generateREADME(answers,retrieveLic,retrieveLicBadge);
+    fs.writeFile(path, data, (err) => {
+      if (err) {
+        console.log(err.message);
+      } else {
+        console.log("data written successfully!");
+      }
+    })
   })
   ;
 // // TODO: Create an array of questions for user input

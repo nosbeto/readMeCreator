@@ -728,6 +728,30 @@ For more information, please refer to <https://unlicense.org>
     break;
 }}
 
+badgeLicense = license => {
+  switch (license) {
+    case "MIT":
+      const MIT = `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`
+      return MIT
+      break;
+    case "GNU_AGPLv3":
+      const GNU_AGPLv3 = `[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)`
+      return GNU_AGPLv3
+      break;
+    case "unlicense":
+      const unlicense = `[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)`
+      return unlicense
+      break;
+  }
+}
+
+/// --> MIT [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+/// ---> GNU_AGPLv3 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+/// ---> unlicense [![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)
+
 // console.log(funcLicense('MIT'))
 
-module.exports = funcLicense;
+module.exports = {
+  funcLicense,
+  badgeLicense
+}
