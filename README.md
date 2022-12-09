@@ -7,7 +7,7 @@ When creating an open source project on GitHub, it’s important to have a high-
 
 With this node.js app, you can quickly and easily create a README file by using a command-line application to generate one. This allows the project creator to devote more time to working on the project.
 
-![Screenshot](assets/images/UsageScreenshot.png)
+![Screenshot](assets/images/usageScreenshot.png)
 
 
 ## Table of Contents

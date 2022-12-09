@@ -2,7 +2,7 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
 const cases = require('./utils/generateMarkdown.js')
-const path = "README.md";
+const path = "README_Template.md";
 
 
 const generateREADME = ({
@@ -97,7 +97,12 @@ inquirer
     },
     {
       type: "list",
-      message: "Select your license from the below options. Default is empty",
+      message: `
+      Select your license from the below options. Default is empty and it won't populate anything on this section
+      
+      NOTE: After your README template has been generated, remember to go the license section and make the appropiate changes if neccesary. 
+      Light edits like fullname and year might be necessary
+      `,
       name: "license",
       choices: ["MIT", "GNU_AGPLv3", "unlicense", "empty"],
       filter(val) {
@@ -136,14 +141,3 @@ inquirer
     })
   })
   ;
-// // TODO: Create an array of questions for user input
-// const questions = [];
-
-// // TODO: Create a function to write README file
-// function writeToFile(fileName, data) {}
-
-// // TODO: Create a function to initialize app
-// function init() {}
-
-// // Function call to initialize app
-// init();
