@@ -19,15 +19,12 @@ const generateREADME = ({
 ) =>
   `
 # ${title}
-
 ${retrieveLicBadge}
 
 ## Description
-
 ${description}
 
 ## Table of Contents
-
 - [Installation](#installation)
 - [Usage](#usage)
 - [Credits](#credits)
@@ -37,39 +34,30 @@ ${description}
 - [Questions](#Questions)
 
 ## Installation 
-
 ${installation}
 
 ## Usage
-
 ${usage}
 
 ## Credits
-
 ${credits}
 
 ## License
-
-${license}
 ${retrieveLic}
 
 ## Contributing
-
 ${contributing}
 
 ## Tests
-
 ${tests}
 
 ## Questions
-
 ${questions}
 
 `;
 
 inquirer
   .prompt([
-    // Q1
     {
       type: "input",
       message: "What is the title of your application?",
@@ -81,9 +69,18 @@ inquirer
       name: "description",
     },
     {
-      type: "input",
-      message:
-        "Provide the instruction for the installation process of your app",
+      type: "editor",
+      message: `
+      Provide the instruction for the installation process of your app
+
+      Summary of steps to use default editor:
+      1) Press <enter>
+      2) When inside of editor, press <i>
+      3) Start typing as usual
+      4) When done editing press <esc>
+      5) To store your changes type --> :wq
+
+      `,
       name: "installation",
     },
     {
@@ -108,12 +105,24 @@ inquirer
       },
     },
     {
-      type: "input",
-      message: "write any tests for your application",
+      type: "editor",
+      message: `
+      Write any tests for your application
+      
+      Summary of steps to use default editor:
+      1) Press <enter>
+      2) When inside of editor, press <i>
+      3) Start typing as usual
+      4) When done editing press <esc>
+      5) To store your changes type --> :wq
+
+      `,
       name: "tests",
-    },
+    }
   ])
   .then((answers) => {
+    // const retrieveEditor = (answers.test1)
+    // console.log(retrieveEditor)
     const retrieveLic = funcLicense(answers.license)
     // console.log(retrieveLic)
     const retrieveLicBadge = badgeLicense(answers.license)
